@@ -118,9 +118,7 @@ public class AutorController {
 				if(autorRepository.countByObra(idAutor) > 0) {
 					response.setStatus(HttpStatus.BAD_REQUEST);
 					response.setMensagem("Não é possível excluir, o Autor possui obra(s) vinculadas");
-					
 				}
-	
 			
 			else {
 				
@@ -153,6 +151,7 @@ public class AutorController {
 			return ResponseEntity.status(500).body(null);
 		}
 	}
+	
 		
 	
 	@GetMapping("{idAutor}")

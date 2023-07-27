@@ -30,12 +30,13 @@ import com.mgmoura.entities.Autor;
 class StefaniniJavaJrApplicationTests {
 
 	@Autowired
-	private MockMvc mockMvc;
+	private MockMvc mockMvc; // chama os metodos da api / crud
 
 	@Autowired
-	private ObjectMapper mapper;
+	private ObjectMapper mapper; // envia e recebe os dtos para a api
 
 	private static Autor autor;
+	
 
 	@Test
 	@Order(1)
@@ -47,8 +48,8 @@ class StefaniniJavaJrApplicationTests {
 		
 		dto.setNome(faker.funnyName().name());
 		dto.setSexo("F");
-		dto.setEmail("post@gmail.com");
-		dto.setDataNascimento("2020-10-05");
+		dto.setEmail(faker.internet().emailAddress());
+		dto.setDataNascimento("2022-10-10");
 		dto.setPaisOrigem(faker.country().name());
 		dto.setCpf(String.valueOf(faker.number().randomNumber(11, false)));
 
@@ -63,27 +64,29 @@ class StefaniniJavaJrApplicationTests {
 		
 		autor = response.getAutor();
 	}
-
+	
 	@Test
 	@Order(2)
 	public void testAutorPut() throws Exception{
 		
+		Faker faker = new Faker();
+		
 		AutorPutRequestDto dto = new AutorPutRequestDto();
 		
 		dto.setIdAutor(autor.getIdAutor());
-		dto.setNome("Usuario Put");
-		dto.setSexo("M");
-		dto.setEmail("put@email.com");
-		dto.setDataNascimento("2019-10-10");
-		dto.setPaisOrigem("usa");
-		dto.setCpf("999-000-111-22");
-		
+		dto.setNome(faker.funnyName().name());
+		dto.setSexo("F");
+		dto.setEmail(faker.internet().emailAddress());
+		dto.setDataNascimento("2022-10-10");
+		dto.setPaisOrigem(faker.country().name());
+		dto.setCpf(String.valueOf(faker.number().randomNumber(11, false)));
+
 		mockMvc.perform(put("/autor") 
 				.contentType("application/json")
 				.content(mapper.writeValueAsString(dto)))
 				.andExpect(status().isOk());
 	}
-
+	
 	@Test
 	@Order(3)
 	public void testAutorGetAll() throws Exception{
@@ -95,9 +98,9 @@ class StefaniniJavaJrApplicationTests {
 	@Order(4)
 	public void testAutorGetById() throws Exception{
 		
-		mockMvc.perform(get("/autor" + autor.getIdAutor())).andExpect(status().isOk());
+		mockMvc.perform(get("/autor/" + autor.getIdAutor()))
+			.andExpect(status().isOk());
 	}
-
 
 
 	@Test
@@ -118,6 +121,7 @@ class StefaniniJavaJrApplicationTests {
 				.andExpect(status().isCreated());
 	}
 	
+	
 	@Test
 	@Order(6)
 	public void testObraGetAll() throws Exception{
@@ -125,13 +129,13 @@ class StefaniniJavaJrApplicationTests {
 		mockMvc.perform(get("/obra/2000-01-01/2025-01-01")).andExpect(status().isOk());
 	}
 	
-	
+
 	@Test
 	@Order(7)
 	public void testAutorDelete() throws Exception{
 		
 		testAutorPost(); // novo autor para deletar
-		mockMvc.perform(delete("/autor" + autor.getIdAutor())).andExpect(status().isOk());
+		mockMvc.perform(delete("/autor/" + autor.getIdAutor())).andExpect(status().isOk());
 	}
 	
 

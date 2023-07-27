@@ -108,18 +108,15 @@ public class ObraController {
 				response.setStatus(HttpStatus.BAD_REQUEST); // 400
 				response.setMensagem("Obra não localizada.");
 				
-				
 			}else {
 				obraRepository.delete(obra.get());
 				
 				response.setStatus(HttpStatus.OK); // 200
 				response.setMensagem("Obra excluída com sucesso.");
 				response.setObra(obra.get());
-				
 			}
 			
 		}catch (Exception e) {
-			
 			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR); // 500
 			response.setMensagem(e.getMessage());
 		}
