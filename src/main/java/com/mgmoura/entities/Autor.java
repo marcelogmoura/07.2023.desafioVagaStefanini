@@ -2,6 +2,8 @@ package com.mgmoura.entities;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,6 +41,7 @@ public class Autor {
 	@Column(name = "email" , unique = true)
 	private String email;
 	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataNascimento;
 	

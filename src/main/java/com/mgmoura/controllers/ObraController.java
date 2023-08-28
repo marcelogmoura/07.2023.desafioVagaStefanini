@@ -52,9 +52,6 @@ public class ObraController {
 				obra.setAutor(autor.get());
 				obra.setDescricao(dto.getDescricao());
 				obra.setNome(dto.getNome());
-				// obra.setDataPublicacao(new SimpleDateFormat("yyyy-MM-dd").parse(dto.getDataPublicacao()));
-				// obra.setDataExposicao(new SimpleDateFormat("yyyy-MM-dd").parse(dto.getDataExposicao()));
-				
 				obra.setDataPublicacao(new SimpleDateFormat("yyyy-MM-dd").parse(dto.getDataPublicacao()));
 				obra.setDataExposicao(new SimpleDateFormat("yyyy-MM-dd").parse(dto.getDataExposicao()));
 								
@@ -108,14 +105,13 @@ public class ObraController {
 				response.setStatus(HttpStatus.BAD_REQUEST); // 400
 				response.setMensagem("Obra não localizada.");
 				
-				
 			}else {
+				
 				obraRepository.delete(obra.get());
 				
 				response.setStatus(HttpStatus.OK); // 200
 				response.setMensagem("Obra excluída com sucesso.");
 				response.setObra(obra.get());
-				
 			}
 			
 		}catch (Exception e) {

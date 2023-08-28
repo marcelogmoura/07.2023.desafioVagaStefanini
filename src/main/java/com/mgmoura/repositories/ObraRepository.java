@@ -22,6 +22,9 @@ public interface ObraRepository extends JpaRepository<Obra, Integer>{
 			List<Obra> findByDatas(
 					@Param("dataInicial") Date dataMin,
 					@Param("dataFinal") Date dataMax);
+	
+	
+
 			
 }
 

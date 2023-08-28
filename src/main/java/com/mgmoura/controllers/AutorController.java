@@ -80,7 +80,6 @@ public class AutorController {
 				item.setNome(dto.getNome());
 				item.setSexo(dto.getSexo());
 				item.setDataNascimento(new SimpleDateFormat("yyyy-MM-dd").parse(dto.getDataNascimento()));
-//				item.setDataNascimento(dto.getDataNascimento());
 				item.setEmail(dto.getEmail());
 				item.setPaisOrigem(dto.getPaisOrigem());
 				item.setCpf(dto.getCpf());
@@ -118,7 +117,6 @@ public class AutorController {
 				if(autorRepository.countByObra(idAutor) > 0) {
 					response.setStatus(HttpStatus.BAD_REQUEST);
 					response.setMensagem("Não é possível excluir, o Autor possui obra(s) vinculadas");
-					
 				}
 	
 			

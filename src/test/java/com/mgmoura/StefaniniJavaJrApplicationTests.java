@@ -49,7 +49,7 @@ class StefaniniJavaJrApplicationTests {
 		dto.setSexo("F");
 		dto.setEmail("post@gmail.com");
 		dto.setDataNascimento("2020-10-05");
-		dto.setPaisOrigem(faker.country().name());
+		dto.setPaisOrigem("Outros"); //dto.setPaisOrigem(faker.country().name());
 		dto.setCpf(String.valueOf(faker.number().randomNumber(11, false)));
 
 		MvcResult result = mockMvc.perform(post("/autor") 
@@ -74,7 +74,7 @@ class StefaniniJavaJrApplicationTests {
 		dto.setNome("Usuario Put");
 		dto.setSexo("M");
 		dto.setEmail("put@email.com");
-		dto.setDataNascimento("2019-10-10");
+		dto.setDataNascimento("2019-02-01");
 		dto.setPaisOrigem("usa");
 		dto.setCpf("999-000-111-22");
 		
@@ -95,7 +95,7 @@ class StefaniniJavaJrApplicationTests {
 	@Order(4)
 	public void testAutorGetById() throws Exception{
 		
-		mockMvc.perform(get("/autor" + autor.getIdAutor())).andExpect(status().isOk());
+		mockMvc.perform(get("/autor/" + autor.getIdAutor())).andExpect(status().isOk());
 	}
 
 
@@ -131,7 +131,7 @@ class StefaniniJavaJrApplicationTests {
 	public void testAutorDelete() throws Exception{
 		
 		testAutorPost(); // novo autor para deletar
-		mockMvc.perform(delete("/autor" + autor.getIdAutor())).andExpect(status().isOk());
+		mockMvc.perform(delete("/autor/" + autor.getIdAutor())).andExpect(status().isOk());
 	}
 	
 
