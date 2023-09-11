@@ -6,17 +6,18 @@ O prazo eram de 96h para conclusão, alguns itens ficaram pendentes após tal pr
 
 
 ## /cadastrar-autor
+## fix: itens 1 e 4
 
 1. aplicar máscara para formatação adequada do campo cpf
 2. lista de países, não apenas Brasil e outros
 3. campo cpf permanecer oculto caso o país selecionado não seja o Brasil
 4. validações nos campos "nome" e "data de nascimento"
 
+
 ## /consultar-ator
 1. implementar a paginação
 
-**resolvido, exibição no formato correto**
-
+**fix, exibição no formato correto**
 2. aplicar máscara para formatação adequada do campo cpf // ajustado
 
 ##/autor-edicao
