@@ -6,7 +6,7 @@ O prazo eram de 96h para conclusão, alguns itens ficaram pendentes após tal pr
 
 
 ## /cadastrar-autor
-## fix: itens 1 e 4
+## fix: itens 1,3 e 4
 
 1. aplicar máscara para formatação adequada do campo cpf
 2. lista de países, não apenas Brasil e outros
